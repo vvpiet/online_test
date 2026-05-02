@@ -15,13 +15,18 @@ A Streamlit-based online MCQ testing system for engineering college students and
 ## Installation
 
 1. Create and activate a Python virtual environment.
-2. Install requirements:
+2. Install requirements in a virtual environment:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
+
+> For cloud deploys, use `python-3.12.18` via `runtime.txt` to avoid Python 3.14 build issues.
+
+> Make sure `runtime.txt` and `pyproject.toml` are committed and pushed to GitHub before redeploying.
 
 3. Configure Postgres database connection.
 
@@ -34,7 +39,7 @@ $env:DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/online_test'
 4. Run the app:
 
 ```powershell
-streamlit run app.py
+.\.venv\Scripts\streamlit run app.py
 ```
 
 ## Admin login
