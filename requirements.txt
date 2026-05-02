@@ -4,4 +4,3 @@ psycopg2-binary==2.9.11
 passlib[bcrypt]==1.7.4
 pandas==2.2.2
 python-dotenv==1.0.0
-Pillow==10.1.0
