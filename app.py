@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 import pandas as pd
 import streamlit as st
-from passlib.hash import bcrypt
+from passlib.context import CryptContext
 from sqlalchemy import select, func, and_
 
 from db import DBSession, init_db
@@ -37,13 +37,15 @@ BRANCHES = [
 CLASSES = ["FY", "SY", "TY", "B.Tech", "BCA", "MCA", "M.tech (CSE)", "M.tech (Design)"]
 SEMESTERS = [str(i) for i in range(1, 9)]
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 
 def hash_password(password: str) -> str:
-    return bcrypt.hash(password)
+    return pwd_context.hash(password)
 
 
 def verify_password(password: str, password_hash: str) -> bool:
-    return bcrypt.verify(password, password_hash)
+    return pwd_context.verify(password, password_hash)
 
 
 def generate_password(length: int = 10) -> str:
