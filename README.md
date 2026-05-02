@@ -26,6 +26,8 @@ python -m pip install -r requirements.txt
 
 > For cloud deploys, use `python-3.12.18` via `runtime.txt` to avoid Python 3.14 build issues.
 
+If the cloud builder still uses Python 3.14 or needs to compile Pillow, add OS packages in `packages.txt`.
+
 > Make sure `runtime.txt` and `pyproject.toml` are committed and pushed to GitHub before redeploying.
 
 3. Configure Postgres database connection.
